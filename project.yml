@@ -1,0 +1,81 @@
+name: Lull
+options:
+  bundleIdPrefix: com.atrium
+  deploymentTarget:
+    iOS: "17.0"
+  developmentLanguage: en
+  groupSortPosition: top
+  createIntermediateGroups: true
+
+settings:
+  base:
+    SWIFT_VERSION: "5.10"
+    IPHONEOS_DEPLOYMENT_TARGET: "17.0"
+    TARGETED_DEVICE_FAMILY: "1,2"
+    DEVELOPMENT_TEAM: "96334T7L5L"
+    CODE_SIGN_STYLE: Manual
+    CODE_SIGN_IDENTITY: "Apple Distribution"
+    SWIFT_STRICT_CONCURRENCY: minimal
+    GCC_TREAT_WARNINGS_AS_ERRORS: NO
+    SWIFT_TREAT_WARNINGS_AS_ERRORS: NO
+    ENABLE_HARDENED_RUNTIME: NO
+    ASSETCATALOG_COMPILER_APPICON_NAME: AppIcon
+    ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME: AccentColor
+
+targets:
+  Lull:
+    type: application
+    platform: iOS
+    sources:
+      - path: Lull/App
+      - path: Lull/Engine
+      - path: Lull/Models
+      - path: Lull/Persistence
+      - path: Lull/Subscription
+      - path: Lull/Theme
+      - path: Lull/Views
+      - path: Lull/Resources/Assets.xcassets
+        buildPhase: resources
+    info:
+      path: Lull/Resources/Info.plist
+      properties:
+        CFBundleDisplayName: Lull
+        CFBundleShortVersionString: "$(MARKETING_VERSION)"
+        CFBundleVersion: "$(CURRENT_PROJECT_VERSION)"
+        LSRequiresIPhoneOS: true
+        UIRequiresFullScreen: false
+        ITSAppUsesNonExemptEncryption: false
+        UIBackgroundModes:
+          - audio
+        UISupportedInterfaceOrientations:
+          - UIInterfaceOrientationPortrait
+        UISupportedInterfaceOrientations~ipad:
+          - UIInterfaceOrientationPortrait
+          - UIInterfaceOrientationPortraitUpsideDown
+          - UIInterfaceOrientationLandscapeLeft
+          - UIInterfaceOrientationLandscapeRight
+        UILaunchScreen:
+          UIColorName: midnight
+        UIApplicationSceneManifest:
+          UIApplicationSupportsMultipleScenes: false
+        NSAppTransportSecurity:
+          NSAllowsArbitraryLoads: false
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.atrium.lull
+        PRODUCT_NAME: Lull
+        MARKETING_VERSION: "1.0.0"
+        CURRENT_PROJECT_VERSION: "1"
+        GENERATE_INFOPLIST_FILE: NO
+
+  LullTests:
+    type: bundle.unit-test
+    platform: iOS
+    sources:
+      - path: LullTests
+    dependencies:
+      - target: Lull
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.atrium.lull.tests
+        GENERATE_INFOPLIST_FILE: YES

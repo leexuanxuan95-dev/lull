@@ -1,0 +1,262 @@
+/* Lull — single shared stylesheet
+   Palette mirrored from UI.md: midnight, moon-cream, warm lamp, forest. */
+
+:root {
+  --midnight:    #0F1429;
+  --night-deep:  #090C1B;
+  --night-soft:  #1C2342;
+  --moon:        #F4F0E8;
+  --moon-soft:   rgba(244, 240, 232, 0.62);
+  --moon-faint:  rgba(244, 240, 232, 0.28);
+  --lamp:        #E8C087;
+  --forest:      #2D4A3E;
+  --hairline:    rgba(244, 240, 232, 0.10);
+
+  --serif: ui-serif, "New York", "Iowan Old Style", "Iowan", "Palatino Linotype", Georgia, serif;
+  --sans:  -apple-system, BlinkMacSystemFont, "SF Pro Text", "Inter", "Helvetica Neue", Arial, sans-serif;
+}
+
+* { box-sizing: border-box; }
+
+html, body {
+  margin: 0;
+  padding: 0;
+  background: var(--midnight);
+  color: var(--moon);
+  font-family: var(--sans);
+  font-size: 17px;
+  line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+body {
+  background:
+    radial-gradient(1200px 800px at 20% -10%, rgba(232, 192, 135, 0.10), transparent 60%),
+    radial-gradient(900px 600px at 110% 20%, rgba(45, 74, 62, 0.18), transparent 60%),
+    linear-gradient(180deg, var(--night-deep) 0%, var(--midnight) 60%, var(--night-soft) 100%);
+  min-height: 100vh;
+}
+
+a { color: var(--lamp); text-decoration: none; transition: opacity 0.15s ease; }
+a:hover { opacity: 0.78; }
+
+/* Layout */
+.container {
+  max-width: 920px;
+  margin: 0 auto;
+  padding: 28px 28px 80px;
+}
+.narrow { max-width: 720px; }
+
+/* Header */
+header.site {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 22px 0 28px;
+  border-bottom: 1px solid var(--hairline);
+}
+.brand {
+  display: flex; align-items: center; gap: 12px;
+  font-family: var(--serif);
+  font-size: 22px;
+  letter-spacing: 0.02em;
+}
+.brand .lamp {
+  width: 30px; height: 30px;
+  background: radial-gradient(circle at 50% 50%, var(--lamp) 0%, rgba(232,192,135,0.4) 40%, transparent 80%);
+  border-radius: 50%;
+  filter: blur(0.4px);
+}
+nav.site a {
+  color: var(--moon-soft);
+  margin-left: 22px;
+  font-size: 14px;
+}
+nav.site a:hover { color: var(--moon); opacity: 1; }
+
+/* Hero */
+.hero {
+  text-align: center;
+  padding: 110px 12px 70px;
+  position: relative;
+}
+.hero .glow {
+  position: absolute; left: 50%; top: 30px; transform: translateX(-50%);
+  width: 420px; height: 420px;
+  background: radial-gradient(circle at 50% 50%, rgba(232,192,135,0.45) 0%, rgba(232,192,135,0.12) 30%, transparent 70%);
+  filter: blur(20px);
+  pointer-events: none;
+}
+.hero h1 {
+  font-family: var(--serif);
+  font-size: clamp(38px, 6vw, 64px);
+  line-height: 1.05;
+  letter-spacing: -0.01em;
+  margin: 0 0 18px;
+  font-weight: 400;
+  position: relative;
+}
+.hero p.lede {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: clamp(17px, 2vw, 22px);
+  color: var(--moon-soft);
+  max-width: 560px;
+  margin: 0 auto 32px;
+  position: relative;
+}
+.cta-row {
+  display: inline-flex; gap: 12px; flex-wrap: wrap; justify-content: center;
+  position: relative;
+}
+.btn {
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 13px 22px;
+  border-radius: 999px;
+  font-size: 15px; font-weight: 500;
+  border: 1px solid transparent;
+  cursor: pointer;
+  transition: transform 0.1s ease, opacity 0.15s ease;
+}
+.btn:active { transform: scale(0.98); }
+.btn.primary {
+  background: var(--lamp);
+  color: var(--midnight);
+}
+.btn.ghost {
+  background: transparent;
+  color: var(--moon);
+  border-color: rgba(244, 240, 232, 0.35);
+}
+
+/* Section */
+section { padding: 50px 0; border-top: 1px solid var(--hairline); }
+section h2 {
+  font-family: var(--serif);
+  font-weight: 400;
+  font-size: clamp(28px, 3.5vw, 36px);
+  margin: 0 0 8px;
+  letter-spacing: -0.005em;
+}
+section .subtitle {
+  font-family: var(--serif);
+  font-style: italic;
+  color: var(--moon-soft);
+  margin: 0 0 28px;
+}
+
+/* Grid */
+.grid {
+  display: grid; gap: 16px;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+}
+.card {
+  padding: 22px;
+  border-radius: 22px;
+  background: rgba(28, 35, 66, 0.55);
+  border: 1px solid var(--hairline);
+}
+.card h3 {
+  font-family: var(--serif);
+  font-weight: 500;
+  font-size: 19px;
+  margin: 0 0 8px;
+}
+.card p {
+  margin: 0;
+  color: var(--moon-soft);
+  font-size: 14.5px;
+}
+
+/* Pricing */
+.pricing-row {
+  display: flex; gap: 12px; flex-wrap: wrap;
+  margin-top: 18px;
+}
+.price-card {
+  flex: 1 1 220px;
+  padding: 22px;
+  border-radius: 20px;
+  background: rgba(28, 35, 66, 0.55);
+  border: 1px solid var(--hairline);
+}
+.price-card.popular {
+  border-color: var(--lamp);
+  box-shadow: 0 0 0 1px var(--lamp), 0 14px 40px rgba(232,192,135,0.10);
+}
+.price-card .label {
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--moon-faint);
+  margin-bottom: 6px;
+}
+.price-card .price {
+  font-family: var(--serif);
+  font-size: 30px;
+  margin: 0 0 4px;
+}
+.price-card .price span { font-size: 14px; color: var(--moon-soft); }
+.price-card ul {
+  list-style: none; padding: 0; margin: 14px 0 0;
+}
+.price-card li {
+  font-size: 14px;
+  color: var(--moon-soft);
+  padding: 6px 0;
+}
+.price-card li::before {
+  content: "·  ";
+  color: var(--lamp);
+}
+
+/* Footer */
+footer.site {
+  padding: 36px 0 18px;
+  border-top: 1px solid var(--hairline);
+  display: flex; justify-content: space-between; flex-wrap: wrap;
+  gap: 12px;
+  font-size: 13px;
+  color: var(--moon-faint);
+}
+footer.site a { color: var(--moon-soft); margin-left: 16px; }
+footer.site a:first-of-type { margin-left: 0; }
+
+/* Long-form (privacy / terms / support) */
+.longform h1 {
+  font-family: var(--serif); font-weight: 400;
+  font-size: clamp(32px, 4.5vw, 44px);
+  margin: 14px 0 6px;
+}
+.longform .meta {
+  color: var(--moon-faint); font-size: 13px; margin-bottom: 30px;
+}
+.longform h2 {
+  font-family: var(--serif); font-weight: 500;
+  font-size: 22px;
+  margin: 40px 0 8px;
+}
+.longform p, .longform li { color: var(--moon-soft); font-size: 16px; }
+.longform code {
+  background: rgba(244,240,232,0.06);
+  padding: 1px 6px; border-radius: 4px;
+  font-size: 13.5px;
+}
+
+/* Stars (decorative) */
+.star {
+  position: absolute;
+  width: 2px; height: 2px;
+  background: rgba(244, 240, 232, 0.7);
+  border-radius: 50%;
+}
+.star.bright { width: 3px; height: 3px; box-shadow: 0 0 4px rgba(244, 240, 232, 0.9); }
+
+/* Responsive */
+@media (max-width: 600px) {
+  .container { padding: 18px 18px 60px; }
+  nav.site a { margin-left: 14px; }
+  .hero { padding: 70px 8px 50px; }
+}

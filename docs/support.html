@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Support — Lull</title>
+  <meta name="theme-color" content="#0F1429" />
+  <link rel="stylesheet" href="assets/styles.css" />
+</head>
+<body>
+  <div class="container narrow longform">
+    <header class="site">
+      <a href="index.html" class="brand" style="text-decoration:none;color:inherit">
+        <div class="lamp"></div>
+        <span>Lull</span>
+      </a>
+      <nav class="site">
+        <a href="index.html">home</a>
+        <a href="privacy.html">privacy</a>
+        <a href="terms.html">terms</a>
+      </nav>
+    </header>
+
+    <h1>Support</h1>
+    <p class="meta">Most questions get answered within a day.</p>
+
+    <p>Email <a href="mailto:hello@lull.app">hello@lull.app</a> with the issue, your iPhone model, and your iOS version. We read every message.</p>
+
+    <h2>Common questions</h2>
+
+    <h2>Why does the same story sometimes appear when I reopen the app?</h2>
+    <p>Each night Lull seeds tonight's story by date + your name + your city + the chosen genre, so reopening the app on the same evening returns the same story. This is on purpose — pause/resume should not pull the rug. Tomorrow's story will be different. Across all genres there are more than 10<sup>40</sup> possible stories, so you'll never run out.</p>
+
+    <h2>Can I change my name or city later?</h2>
+    <p>Yes. <code>Settings → about you</code>. The next story Lull writes will use the new values.</p>
+
+    <h2>The voice cuts out / sounds robotic.</h2>
+    <p>Lull uses Apple's on-device speech synthesis. iOS ships with a default voice that varies by region; if it sounds clipped, install a higher-quality English voice in <code>Settings → Accessibility → Spoken Content → Voices</code> and pick a "Premium" or "Enhanced" voice for your region. Then reopen Lull.</p>
+
+    <h2>I subscribed but the Pro features aren't unlocked.</h2>
+    <p>Open <code>Settings → Subscription</code> in Lull and tap "manage." If the issue persists, on the paywall tap "restore purchases." If still stuck, email us with your purchase date.</p>
+
+    <h2>How do I cancel?</h2>
+    <p><code>iOS Settings → Apple ID → Subscriptions → Lull → Cancel</code>. Cancellation takes effect at the end of your current billing period.</p>
+
+    <h2>HealthKit permission was denied — does sleep detection still work?</h2>
+    <p>Yes, partially. Without HealthKit, Lull falls back to your chosen sleep timer (15/30/45/60 min, or "until I'm asleep" which caps at 1 hour). It will still fade the story out gracefully.</p>
+
+    <h2>Voice clone says "audio never leaves your iCloud" — what does that mean?</h2>
+    <p>Your 30-second sample is processed on the device. The resulting voice profile is stored in your private iCloud Keychain. We can't access it, and neither can any third party. If you uninstall the app, the profile is removed.</p>
+
+    <h2>Where's the Apple Watch app?</h2>
+    <p>The Watch companion is part of the iPhone bundle. Pair your Watch and the complication and force-touch shortcuts will appear automatically.</p>
+
+    <h2>What if Lull keeps me up because I'm reading the prose?</h2>
+    <p>That's the point of the audio-only default — the story is meant to be heard with your eyes closed. Tap the prose icon on the listening screen to hide the text.</p>
+
+    <h2>Privacy &amp; data</h2>
+    <p>See our <a href="privacy.html">privacy policy</a> for the long version. Short version: nothing about your evening leaves your device.</p>
+
+    <footer class="site">
+      <span>© <span id="year"></span> Lull</span>
+      <div>
+        <a href="index.html">home</a>
+        <a href="privacy.html">privacy</a>
+        <a href="terms.html">terms</a>
+      </div>
+    </footer>
+  </div>
+  <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+</body>
+</html>

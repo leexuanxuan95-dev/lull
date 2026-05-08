@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Privacy Policy — Lull</title>
+  <meta name="theme-color" content="#0F1429" />
+  <link rel="stylesheet" href="assets/styles.css" />
+</head>
+<body>
+  <div class="container narrow longform">
+    <header class="site">
+      <a href="index.html" class="brand" style="text-decoration:none;color:inherit">
+        <div class="lamp"></div>
+        <span>Lull</span>
+      </a>
+      <nav class="site">
+        <a href="index.html">home</a>
+        <a href="terms.html">terms</a>
+        <a href="support.html">support</a>
+      </nav>
+    </header>
+
+    <h1>Privacy Policy</h1>
+    <p class="meta">Effective date: 2026-05-08 · Last updated: 2026-05-08</p>
+
+    <p>Lull is built on a simple promise: <strong>your evening is your evening</strong>. We've designed the app so that almost nothing leaves your device. This policy explains what data is involved, where it lives, and the choices you have.</p>
+
+    <h2>What we collect</h2>
+    <p>The app stores the following <strong>locally on your device only</strong>:</p>
+    <ul>
+      <li>Your first name, city, and the calm activity you entered during onboarding.</li>
+      <li>Your generated stories and chat messages with the Companion.</li>
+      <li>Your preferences (selected voice, sleep-timer default, smart-wake time).</li>
+      <li>Your subscription state, validated by Apple's StoreKit.</li>
+    </ul>
+    <p>None of the items above are sent to Lull's servers. We do not operate a server that receives them.</p>
+
+    <h2>What we don't collect</h2>
+    <ul>
+      <li>We do not collect your sleep data, even when HealthKit is granted.</li>
+      <li>We do not collect the text of your stories or chat messages.</li>
+      <li>We do not collect device identifiers, IP addresses, or analytics events.</li>
+      <li>We do not use third-party SDKs that collect personal information.</li>
+    </ul>
+
+    <h2>Story generation</h2>
+    <p>Stories are generated entirely on-device by a local templated grammar engine. There is no LLM call, no cloud generation, and no network access required to read you a bedtime story. Lull works in airplane mode.</p>
+
+    <h2>Companion chat</h2>
+    <p>The Companion's replies are produced by a local rule-based engine. Your messages and the engine's replies stay on your device. Clearing the conversation in <code>Settings → Companion → Clear conversation</code> deletes the local store.</p>
+
+    <h2>Voice clone (Pro+)</h2>
+    <p>If you opt into the Pro+ voice clone feature, a 30-second voice sample is recorded with your microphone. The audio is processed on your device and the resulting voice profile is stored in your private iCloud Keychain — accessible only to you. Lull does not receive your recording or your voice profile.</p>
+
+    <h2>HealthKit</h2>
+    <p>Lull may request read-only access to sleep stages so it can fade the story out 5 minutes after you reach a non-awake stage. Sleep data is read on-device and used only for that purpose. We do not store, copy, or transmit the data.</p>
+
+    <h2>Subscriptions and payments</h2>
+    <p>All purchases go through Apple's StoreKit. We never see your payment information. Apple shares with us only an anonymous indication that you have an active entitlement.</p>
+
+    <h2>Children's privacy</h2>
+    <p>Lull is not directed at children under 13. We do not knowingly collect data from children.</p>
+
+    <h2>Your choices</h2>
+    <ul>
+      <li>You can edit or clear your name, city, and activity in Settings.</li>
+      <li>You can clear all chat history in Settings → Companion.</li>
+      <li>You can revoke HealthKit access in iOS Settings → Health → Data Access &amp; Devices → Lull.</li>
+      <li>You can revoke microphone access in iOS Settings → Privacy &amp; Security → Microphone.</li>
+      <li>Uninstalling Lull deletes all of the above from your device.</li>
+    </ul>
+
+    <h2>Changes</h2>
+    <p>If we ever materially change this policy we'll bump the date above and post a notice in-app for the next launch.</p>
+
+    <h2>Contact</h2>
+    <p>Questions or concerns: <a href="mailto:hello@lull.app">hello@lull.app</a></p>
+
+    <footer class="site">
+      <span>© <span id="year"></span> Lull</span>
+      <div>
+        <a href="index.html">home</a>
+        <a href="terms.html">terms</a>
+        <a href="support.html">support</a>
+      </div>
+    </footer>
+  </div>
+  <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+</body>
+</html>
