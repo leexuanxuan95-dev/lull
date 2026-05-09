@@ -35,6 +35,26 @@ final class AppStore: ObservableObject {
         subscription.$tier
             .sink { _ in /* downstream views observe `isPro` directly */ }
             .store(in: &cancellables)
+
+        // Screenshot-script support: `--start-listening=GENRE` auto-starts a
+        // story for that genre; `--paywall` opens the paywall on launch.
+        // Has no effect on real users.
+        let args = ProcessInfo.processInfo.arguments
+        if let arg = args.first(where: { $0.hasPrefix("--start-listening=") }) {
+            let raw = String(arg.dropFirst("--start-listening=".count))
+            if let genre = Genre(rawValue: raw) {
+                DispatchQueue.main.async { [weak self] in
+                    guard let self else { return }
+                    let story = self.ensureTonightStory(for: genre)
+                    self.startListening(story)
+                }
+            }
+        }
+        if args.contains("--paywall") {
+            DispatchQueue.main.async { [weak self] in
+                self?.paywallPresented = true
+            }
+        }
     }
 
     // ── derived ──
