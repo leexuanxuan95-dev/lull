@@ -19,35 +19,101 @@ enum ChatGrammar {
         "soft_image": [
             "a low lamp", "a kept room", "a kettle just settling",
             "a wool blanket", "the small warm circle of a reading light",
-            "a window with the curtain half-drawn", "a chair you don't have to leave"
+            "a window with the curtain half-drawn",
+            "a chair you don't have to leave", "a pillow that has known you a while",
+            "the inside of a kept room", "a candle in a saucer",
+            "an open book under a reading lamp", "a coat on the back of a chair",
+            "tea cooling on a counter", "the soft yellow of a hallway light",
+            "a folded throw on the arm of the couch", "rain that just stopped",
+            "a clean countertop after dinner", "a closed bookcase",
+            "a dimmed corner of a room", "the still air of a small library",
+            "a kitchen with the dishwasher running quietly",
+            "a desk lamp left on by accident", "a hallway with one light at the end",
+            "a quilt you folded last Sunday", "the smell of bread from a closed bakery"
         ],
         "slow_verb": [
             "drift", "settle", "soften", "rest",
-            "ease", "loosen", "let go", "slow"
+            "ease", "loosen", "let go", "slow",
+            "quiet", "still", "lean back", "exhale"
         ],
         "calm_emotion": [
             "a small unhurried gladness",
             "the kind of ease you forget you can feel",
             "a quiet that doesn't need to be earned",
-            "a softness that asks nothing of you"
+            "a softness that asks nothing of you",
+            "the slow returning of warmth",
+            "a gentleness with no errand",
+            "the safety of being unobserved",
+            "the comfort of being exactly where you are"
         ],
         "weather": [
             "soft rain", "still night air", "warm air",
-            "the after-rain hush", "low silver mist"
+            "the after-rain hush", "low silver mist",
+            "a windless cold", "the last of the daylight",
+            "a sky that has just stopped being orange"
         ],
         "in_breath_count": ["four", "four", "four"],   // kept short — single value space
         "out_breath_count": ["six", "seven", "eight"],
         "anchor_body": [
             "the back of your shoulders", "your jaw",
             "the soles of your feet", "the space behind your eyes",
-            "your hands, just where they are", "your breath, only the first half of it"
+            "your hands, just where they are",
+            "your breath, only the first half of it",
+            "the place between your shoulder blades",
+            "your tongue, when it's not pressed to the roof of your mouth",
+            "the weight of your head into the pillow",
+            "your fingertips against the sheet",
+            "the small of your back",
+            "the heels of your hands",
+            "your eyelids, only their weight",
+            "the air at the bridge of your nose",
+            "your collarbones, one at a time",
+            "your right elbow, then your left",
+            "the warmth at the back of your knees",
+            "your scalp at the very top",
+            "the arch of one foot",
+            "the hollow of your throat"
         ],
         "park_phrase": [
             "tomorrow's problem, kept tomorrow's size",
             "a thing for the morning, not the night",
             "real, but not now",
             "true, but not now",
-            "valid, and also can wait"
+            "valid, and also can wait",
+            "important — and patient",
+            "yours to carry tomorrow, not tonight"
+        ],
+        "warm_color": [
+            "amber", "honey-gold", "the color of low lamps",
+            "ember-red", "old brass", "tea-stained yellow",
+            "candle-warm orange"
+        ],
+        "tender_action": [
+            "a hand on your chest", "a long slow exhale",
+            "one hand over the other", "the weight of the blanket",
+            "a glass of water by the bed", "a slow turn onto your side",
+            "your eyes closing for one beat",
+            "a sip of water, slow", "the blanket pulled up another inch",
+            "one shoulder dropped, then the other",
+            "your fingers unclenching on their own",
+            "an easy yawn you don't try to stop",
+            "your jaw releasing once",
+            "a slower out-breath than the one before",
+            "two slow blinks", "your knees bent a little more"
+        ],
+        "small_kindness": [
+            "the smallest amount of attention",
+            "a kindness with no reason",
+            "one slow breath, just one",
+            "the easiest thing in the room",
+            "letting the next thought go without arguing with it",
+            "doing less, not more",
+            "no need to figure anything out",
+            "the lowest bar your body needs",
+            "a softness with no plan",
+            "a permission you didn't have to ask for",
+            "the gentlest move available",
+            "the quietest version of you, allowed"
         ]
     ]
 
@@ -145,11 +211,12 @@ enum ChatGrammar {
             "Got it, {NAME}. Anxious is loud. We can lower the volume."
         ],
         .cantSleep: [
-            "Awake. That's where you are. We can work with that.",
-            "Wide awake. Okay. Let's not fight it directly.",
-            "Sleep is being shy tonight. We'll be patient.",
-            "Awake at this hour is annoying, and also — solvable, slowly.",
-            "Yeah, awake. Let's not call it a problem yet."
+            "Awake, {NAME}. That's where you are. We can work with that.",
+            "Wide awake. Okay, {NAME}. Let's not fight it directly.",
+            "Sleep is being shy tonight, {NAME}. We'll be patient.",
+            "Awake at this hour is annoying, and also — solvable, slowly. {NAME}, we'll go gentle.",
+            "Yeah, awake. {NAME}, let's not call it a problem yet.",
+            "{NAME}, the not-sleeping is loud. Let's lower it together."
         ],
         .overthinking: [
             "Loops. Got it. The brain's running the night shift again.",
@@ -313,92 +380,116 @@ enum ChatGrammar {
         .greet: [
             "If it's a soft night — good, stay in it. If it's a loud night, we can lower the volume.",
             "If you want a story, I've got one. If you just want to sit, that's also a thing we do here.",
-            "Either way: we can {slow_verb}."
+            "Either way: we can {slow_verb}.",
+            "{NAME}, picture {soft_image}. {tender_action}. Soft attention on {anchor_body}. {small_kindness}."
         ],
         .farewell: [
-            "I'll be here tomorrow night, and the night after.",
-            "Whenever you're back, I'll have a {soft_image} ready.",
-            "If you can't sleep again, just open the app — I'll start gentle."
+            "I'll be here tomorrow night, and the night after. {soft_image} will be too.",
+            "Whenever you're back, I'll have {soft_image} ready. {tender_action} until then.",
+            "If you can't sleep again, just open the app — I'll start gentle. Picture {soft_image}, anchor on {anchor_body}.",
+            "{NAME}, {soft_image}. {tender_action}. {small_kindness} on {anchor_body}. Goodnight."
         ],
         .thanks: [
-            "Stay if you want. The lamp's on.",
-            "If you want a story, the picker is on the home tab.",
-            "I'll be quiet now unless you want me again."
+            "Stay if you want. The lamp's on. {soft_image} on hand.",
+            "If you want a story, the picker is on the home tab. {tender_action}, {NAME}.",
+            "I'll be quiet now unless you want me again. Anchor on {anchor_body} if it helps.",
+            "{NAME}, {small_kindness}. Picture {soft_image}. {tender_action}. {anchor_body} for the next breath."
         ],
         .acknowledgement: [
-            "Good. Long exhale here.",
-            "Soft attention on {anchor_body}.",
-            "We can do less in a minute, not more."
+            "Good. Long exhale here. {tender_action}.",
+            "Soft attention on {anchor_body}. {soft_image} in your head, gently.",
+            "We can do less in a minute, not more. {small_kindness}.",
+            "{NAME}, {tender_action}. {soft_image}. {anchor_body}. {small_kindness}."
         ],
         .anxious: [
-            "Try this: {anchor_body}. That's the only thing for thirty seconds.",
-            "Inhale {in_breath_count}, exhale {out_breath_count}. Three rounds. The body will start to take you seriously.",
-            "Name three things you can hear right now. Out loud or in your head. Just three. Then we go again."
+            "Try this: {anchor_body}. That's the only thing for thirty seconds. {tender_action} helps.",
+            "Inhale {in_breath_count}, exhale {out_breath_count}. Three rounds. The body will start to take you seriously. Picture {soft_image}.",
+            "Name three things you can hear right now. Out loud or in your head. Just three. Then we go again. {NAME}, {small_kindness}.",
+            "Anchor on {anchor_body}, {NAME}. {tender_action}. {calm_emotion} is on the other side of two slow breaths.",
+            "{NAME}, {soft_image}. {tender_action}. {anchor_body}. {small_kindness}."
         ],
         .cantSleep: [
-            "Try this: don't try. Pretend it's a rest night, not a sleep night. The body sleeps better when it isn't being graded.",
-            "Want me to start a story? Fifteen minutes of someone walking slowly through a kind town tends to do it.",
-            "Pick a body part — {anchor_body} — and just hand the next two breaths to it. That's the whole job."
+            "Try this: don't try. Pretend it's a rest night, not a sleep night. The body sleeps better when it isn't being graded. {tender_action} helps.",
+            "Want me to start a story? Fifteen minutes of someone walking slowly through a kind town tends to do it. Picture {soft_image} as I read.",
+            "Pick a body part — {anchor_body} — and just hand the next two breaths to it. That's the whole job. {small_kindness}.",
+            "{NAME}, here's the thing: {small_kindness}. Try {tender_action}, and let me read you a story.",
+            "{NAME}, {soft_image}. {tender_action}. {anchor_body}. {small_kindness}."
         ],
         .overthinking: [
-            "Pick a body anchor — {anchor_body} — and stay there for two breaths. The loop will keep going. Let it. You're elsewhere.",
-            "Try a story tonight. The brain will follow another voice better than it'll follow your own.",
-            "Name what you keep coming back to in three words or less. Then put it on tomorrow's desk. {park_phrase}."
+            "Pick a body anchor — {anchor_body} — and stay there for two breaths. The loop will keep going. Let it. You're elsewhere. {soft_image}.",
+            "Try a story tonight, {NAME}. The brain will follow another voice better than it'll follow your own. Picture {soft_image} as we go.",
+            "Name what you keep coming back to in three words or less. Then put it on tomorrow's desk. {park_phrase}. {tender_action}.",
+            "{NAME}, the loop wants to win the night. {small_kindness} — let {anchor_body} be the next thing instead.",
+            "{NAME}, {soft_image}. {tender_action}. {anchor_body}. {small_kindness}."
         ],
         .sad: [
-            "{soft_image}. That's the whole offer right now.",
-            "If a story would be company, I'll start one. If silence is better, I'll be quiet.",
-            "You can put a hand on your chest. Sometimes the body needs to know somebody's home."
+            "{soft_image}. That's the whole offer right now. {tender_action} helps a little.",
+            "If a story would be company, I'll start one. If silence is better, I'll be quiet. {NAME}, your call.",
+            "You can put a hand on your chest. Sometimes the body needs to know somebody's home. {anchor_body} works too.",
+            "{NAME}, picture {soft_image}. {small_kindness}. That's all sad needs from you tonight.",
+            "{NAME}, {soft_image}. {tender_action}. {anchor_body}. {small_kindness}."
         ],
         .lonely: [
-            "I'll stay. If you want a story, I'll narrate. If you want quiet, I'll just keep the lamp on.",
-            "If there's someone to text who'd be glad to hear from you tomorrow morning — make a tiny note for tomorrow, not now.",
-            "Lonely at night doesn't mean lonely at noon. We just have to get to noon."
+            "I'll stay, {NAME}. If you want a story, I'll narrate. If you want quiet, I'll just keep the lamp on. {soft_image}.",
+            "If there's someone to text who'd be glad to hear from you tomorrow morning — make a tiny note for tomorrow, not now. {park_phrase}.",
+            "Lonely at night doesn't mean lonely at noon. We just have to get to noon. {NAME}, {small_kindness}.",
+            "{NAME}, picture {soft_image}. {tender_action}. The hours between here and morning aren't as long as they feel.",
+            "{NAME}, {soft_image}. {tender_action}. {anchor_body}. {small_kindness}."
         ],
         .worried: [
-            "Try this: write down the one sentence version, somewhere off the phone if you can. Then the brain doesn't have to keep holding it for you.",
-            "We can park it. Not erase it. Just put it on tomorrow's desk. {park_phrase}.",
-            "Ask the worry: what do you actually want me to do tonight? If the answer is 'nothing,' that's permission to {slow_verb}."
+            "Try this: write down the one sentence version, somewhere off the phone if you can. Then the brain doesn't have to keep holding it for you. {park_phrase}.",
+            "{NAME}, we can park it. Not erase it. Just put it on tomorrow's desk. {park_phrase}. {tender_action}.",
+            "Ask the worry: what do you actually want me to do tonight? If the answer is 'nothing,' that's permission to {slow_verb}. {soft_image}.",
+            "{NAME}, {small_kindness}. The thing is real. So is your need to rest. Both can be true.",
+            "{NAME}, {soft_image}. {tender_action}. {anchor_body}. {small_kindness}."
         ],
         .scared: [
-            "Look at one familiar thing in the room. Just one. Tell me what it is, in your head.",
-            "Hand on chest, slow exhale. The fast part is the in-breath; let the out-breath be the long one.",
-            "You're {NAME}, in your room, on a Thursday. The dream is over. The room is the thing that's true now."
+            "Look at one familiar thing in the room. Just one. Tell me what it is, in your head. {soft_image}.",
+            "Hand on chest, slow exhale. The fast part is the in-breath; let the out-breath be the long one. {tender_action}.",
+            "You're {NAME}, in your room, on a Thursday. The dream is over. The room is the thing that's true now. Anchor on {anchor_body}.",
+            "{NAME}, {tender_action}. Picture {soft_image}. {anchor_body} for two breaths. {small_kindness}."
         ],
         .restless: [
-            "Stretch one thing — one — then settle. Repeat once if you have to.",
-            "Roll onto the other side. Long exhale on the way. Don't try to be still yet.",
-            "{anchor_body}: that's the next twenty seconds."
+            "Stretch one thing — one — then settle. Repeat once if you have to. {tender_action}.",
+            "Roll onto the other side. Long exhale on the way. Don't try to be still yet. Picture {soft_image}.",
+            "{anchor_body}: that's the next twenty seconds. {small_kindness}.",
+            "{NAME}, {tender_action}. Then {anchor_body}. Then {soft_image}. {small_kindness}."
         ],
         .grateful: [
-            "If there's one detail you want to keep — keep it. The rest can go.",
-            "Sleep is the period at the end of a good day. Earned this.",
-            "Don't think about it too much. Just let it sit."
+            "If there's one detail you want to keep — keep it. The rest can go. {soft_image}.",
+            "Sleep is the period at the end of a good day. Earned this. {tender_action}.",
+            "Don't think about it too much. Just let it sit. {small_kindness}.",
+            "{NAME}, {soft_image}. {tender_action}. {anchor_body}. {small_kindness}."
         ],
         .requestStory: [
-            "Give me thirty seconds — I'll have one for you.",
-            "Want a voice? You can pick one in Settings → Voices.",
-            "Same genre as last time, or something different tonight?"
+            "Give me thirty seconds — I'll have one for you. {soft_image} in the opening line.",
+            "Want a voice? You can pick one in Settings → Voices. {tender_action} while we set up.",
+            "Same genre as last time, or something different tonight? {small_kindness}, either way.",
+            "{NAME}, {tender_action}. {soft_image}. Anchor on {anchor_body}. I'll begin in a moment."
         ],
         .requestBreathing: [
-            "Round one: inhale {in_breath_count}, exhale {out_breath_count}. Round two, same. Round three, longer if you can.",
-            "If counting feels like work, just make the out-breath the long one. That's most of the trick.",
-            "Three slow rounds. Don't push. The body is doing it; you're just along."
+            "Round one: inhale {in_breath_count}, exhale {out_breath_count}. Round two, same. Round three, longer if you can. {tender_action}.",
+            "If counting feels like work, just make the out-breath the long one. That's most of the trick. Anchor on {anchor_body}.",
+            "Three slow rounds. Don't push. The body is doing it; you're just along. Picture {soft_image}.",
+            "{NAME}, {tender_action}. Inhale {in_breath_count}, exhale {out_breath_count}. {anchor_body}. {small_kindness}."
         ],
         .requestQuiet: [
-            "{soft_image}, in your head.",
-            "Soft attention on {anchor_body}. That's the whole instruction.",
-            "I'll be here. Type any letter when you want me back."
+            "{soft_image}, in your head. {tender_action}.",
+            "Soft attention on {anchor_body}. That's the whole instruction. {small_kindness}.",
+            "I'll be here. Type any letter when you want me back. {soft_image} until then.",
+            "{NAME}, {soft_image}. {tender_action}. {anchor_body}. {small_kindness}."
         ],
         .venting: [
-            "Everything you said is allowed. None of it needs a solution from me right now.",
-            "If any of it has a one-line summary, you can write that down somewhere. The rest can stay messy.",
-            "{park_phrase}. We can come back to it."
+            "Everything you said is allowed. None of it needs a solution from me right now. {soft_image}.",
+            "If any of it has a one-line summary, you can write that down somewhere. The rest can stay messy. {park_phrase}.",
+            "{park_phrase}. We can come back to it. {tender_action}.",
+            "{NAME}, {tender_action}. {soft_image}. Anchor on {anchor_body}. {small_kindness}."
         ],
         .neutral: [
-            "Want a story, or want to talk?",
-            "If you want, name the loudest thing in the room — body, head, or feeling.",
-            "I can go quieter, or I can offer a story. Your call."
+            "Want a story, or want to talk? {soft_image} either way.",
+            "If you want, name the loudest thing in the room — body, head, or feeling. {tender_action} helps.",
+            "I can go quieter, or I can offer a story. Your call. Anchor on {anchor_body}.",
+            "{NAME}, {tender_action}. {soft_image}. {anchor_body}. {small_kindness}."
         ]
     ]
 
@@ -504,36 +595,67 @@ enum ChatGrammar {
     // MARK: Combinatoric estimation
     // ──────────────────────────────────────────────────────────────────────
 
-    /// Lower bound on distinct replies the engine can produce. We sum across
-    /// every intent: openers × bridges × bodies × closers × slot variation,
-    /// with slot variation estimated as the geometric mean pool size raised
-    /// to the average slot count per part. Conservative — undercounts by
-    /// ignoring topic addons and body-state addons.
+    /// Lower bound on distinct replies the engine can produce.
+    ///
+    /// For each intent we sum over every (opener, bridge, body, closer)
+    /// quadruple of templates and multiply by the slot product of all four
+    /// templates concatenated. This is the same shape as
+    /// `StoryGrammar.combinations(for:)` and gives a real lower bound rather
+    /// than a hand-waved average.
+    ///
+    /// Body-state addons and topic-specific acknowledgements multiply this
+    /// further at runtime; we don't credit them here.
     static func totalCombinations() -> Double {
-        let avgPoolSize: Double = {
-            let nonTrivial = pools.values.filter { $0.count > 1 }
-            let sizes = nonTrivial.map { Double($0.count) }
-            guard !sizes.isEmpty else { return 1 }
-            return sizes.reduce(0, +) / Double(sizes.count)
-        }()
-        // Average slot count per template (sample): about 1
-        let avgSlotsPerPart: Double = 1.0
-        let slotFactor = pow(avgPoolSize, avgSlotsPerPart * 4) // 4 parts
-
         var total: Double = 0
         for intent in ChatIntent.allInstances {
-            let o = Double(openers[intent]?.count ?? 1)
-            let br = Double((bridges[intent]?.filter { !$0.isEmpty }.count ?? 1).clamped(min: 1))
-            let bd = Double(bodies[intent]?.count ?? 1)
-            let cl = Double((closers[intent]?.filter { !$0.isEmpty }.count ?? 1).clamped(min: 1))
-            total += o * br * bd * cl * slotFactor
+            let openerPool   = openers[intent]   ?? []
+            let bridgePool   = (bridges[intent] ?? []).filter { !$0.isEmpty }
+            let bodyPool     = bodies[intent]    ?? []
+            let closerPool   = (closers[intent] ?? []).filter { !$0.isEmpty }
+
+            // Treat empty pools as 1 (the part is skipped, contributing one
+            // option of "nothing").
+            let openerList = openerPool.isEmpty ? [""] : openerPool
+            let bridgeList = bridgePool.isEmpty ? [""] : bridgePool
+            let bodyList   = bodyPool.isEmpty   ? [""] : bodyPool
+            let closerList = closerPool.isEmpty ? [""] : closerPool
+
+            for o in openerList {
+                let oP = slotProduct(in: o)
+                for br in bridgeList {
+                    let brP = slotProduct(in: br)
+                    for bd in bodyList {
+                        let bdP = slotProduct(in: bd)
+                        for cl in closerList {
+                            let clP = slotProduct(in: cl)
+                            total += oP * brP * bdP * clP
+                        }
+                    }
+                }
+            }
         }
         return total
     }
-}
 
-private extension Int {
-    func clamped(min lower: Int) -> Int { Swift.max(self, lower) }
+    private static func slotProduct(in body: String) -> Double {
+        guard !body.isEmpty else { return 1 }
+        var product: Double = 1
+        let pattern = try! NSRegularExpression(pattern: #"\{([A-Za-z_]+)\}"#)
+        let ns = body as NSString
+        let matches = pattern.matches(in: body, range: NSRange(location: 0, length: ns.length))
+        for m in matches {
+            let key = ns.substring(with: m.range(at: 1))
+            switch key {
+            case "NAME", "CITY", "USER_ACTIVITY":
+                continue // user-provided, not counted
+            default:
+                if let pool = pools[key], !pool.isEmpty {
+                    product *= Double(pool.count)
+                }
+            }
+        }
+        return product
+    }
 }
 
 /// Manual `allCases` so we don't have to make `ChatIntent` `CaseIterable`

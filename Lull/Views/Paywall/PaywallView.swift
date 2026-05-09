@@ -15,10 +15,10 @@ struct PaywallView: View {
 
         var productID: String {
             switch self {
-            case .monthly:  return SubscriptionStore.monthlyProID
-            case .annual:   return SubscriptionStore.annualProID
-            case .lifetime: return SubscriptionStore.lifetimeID
-            case .proPlus:  return SubscriptionStore.proPlusMonthlyID
+            case .monthly:  return LullProductIDs.monthlyPro
+            case .annual:   return LullProductIDs.annualPro
+            case .lifetime: return LullProductIDs.lifetime
+            case .proPlus:  return LullProductIDs.proPlusMonthly
             }
         }
     }

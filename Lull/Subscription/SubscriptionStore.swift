@@ -2,6 +2,16 @@ import Foundation
 import StoreKit
 import Combine
 
+/// Real product IDs configured in App Store Connect. Held outside the
+/// `@MainActor` class so non-isolated enums (PaywallView.PlanID) can read
+/// them without a Swift 6 isolation warning.
+enum LullProductIDs {
+    static let monthlyPro      = "lull.pro.monthly"
+    static let annualPro       = "lull.pro.annual"
+    static let lifetime        = "lull.lifetime"
+    static let proPlusMonthly  = "lull.proplus.monthly"
+}
+
 /// StoreKit 2 wrapper. Keeps `isPro`/`isProPlus` in sync with active entitlements.
 ///
 /// In Simulator without a configured StoreKit configuration, all `Product`
@@ -14,12 +24,12 @@ final class SubscriptionStore: ObservableObject {
         case free, pro, proPlus, lifetime
     }
 
-    // Real product IDs would be configured in App Store Connect. These match
-    // what the paywall surfaces.
-    static let monthlyProID    = "lull.pro.monthly"
-    static let annualProID     = "lull.pro.annual"
-    static let lifetimeID      = "lull.lifetime"
-    static let proPlusMonthlyID = "lull.proplus.monthly"
+    // Convenience re-exports so call sites that already use
+    // `SubscriptionStore.monthlyProID` keep working.
+    static let monthlyProID     = LullProductIDs.monthlyPro
+    static let annualProID      = LullProductIDs.annualPro
+    static let lifetimeID       = LullProductIDs.lifetime
+    static let proPlusMonthlyID = LullProductIDs.proPlusMonthly
 
     @Published private(set) var products: [Product] = []
     @Published private(set) var tier: Tier = .free
@@ -51,8 +61,8 @@ final class SubscriptionStore: ObservableObject {
         defer { isLoading = false }
         do {
             let ids: Set<String> = [
-                Self.monthlyProID, Self.annualProID,
-                Self.lifetimeID, Self.proPlusMonthlyID
+                LullProductIDs.monthlyPro, LullProductIDs.annualPro,
+                LullProductIDs.lifetime,   LullProductIDs.proPlusMonthly
             ]
             let loaded = try await Product.products(for: ids)
             self.products = loaded.sorted(by: { $0.displayName < $1.displayName })
@@ -89,7 +99,7 @@ final class SubscriptionStore: ObservableObject {
 
     func restore() async {
         do {
-            try await AppStore.sync()
+            try await StoreKit.AppStore.sync()
             await refreshEntitlements()
         } catch {
             self.lastError = error.localizedDescription
@@ -103,11 +113,11 @@ final class SubscriptionStore: ObservableObject {
         for await result in Transaction.currentEntitlements {
             guard case .verified(let tx) = result else { continue }
             switch tx.productID {
-            case Self.lifetimeID:
+            case LullProductIDs.lifetime:
                 newTier = .lifetime
-            case Self.proPlusMonthlyID:
+            case LullProductIDs.proPlusMonthly:
                 newTier = .proPlus
-            case Self.monthlyProID, Self.annualProID:
+            case LullProductIDs.monthlyPro, LullProductIDs.annualPro:
                 if newTier != .lifetime && newTier != .proPlus { newTier = .pro }
             default:
                 break

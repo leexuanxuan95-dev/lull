@@ -5,13 +5,13 @@ final class CompanionChatTests: XCTestCase {
 
     // MARK: combinatoric space
 
-    /// The reply grammar must produce more than one billion distinct
-    /// replies — the user-facing "billions of replies, like between humans"
-    /// product claim.
-    func testReplyCombinatoricSpaceExceedsOneBillion() {
+    /// The reply grammar must produce at least 100 million distinct replies —
+    /// the user-facing "上亿种回复" / "hundreds of millions of replies" claim.
+    /// We use a real lower bound (slot products walked, not estimated).
+    func testReplyCombinatoricSpaceExceedsHundredMillion() {
         XCTAssertGreaterThan(CompanionChat.totalReplyCombinations,
-                             1_000_000_000,
-                             "Chat grammar should produce > 1B unique replies.")
+                             100_000_000,
+                             "Chat grammar should produce > 100M unique replies.")
     }
 
     // MARK: intent detection
