@@ -135,5 +135,8 @@ final class SubscriptionStore: ObservableObject {
         }
     }
 
-    var isProPlus: Bool { tier == .proPlus }
+    /// In v1 we only sell the lifetime non-consumable, so lifetime buyers
+    /// get every feature including voice-clone (which is otherwise gated
+    /// behind the Pro+ subscription that ships in v1.1).
+    var isProPlus: Bool { tier == .proPlus || tier == .lifetime }
 }

@@ -27,3 +27,4 @@ Pods/
 # Tests output
 fastlane/test_output/
 fastlane/screenshots/
+scripts/env.sh

@@ -125,6 +125,25 @@ struct SettingsView: View {
                             }
                         }
 
+                        // legal — App Store reviewers need these visible
+                        LullCard {
+                            VStack(alignment: .leading, spacing: 10) {
+                                Text("legal")
+                                    .font(LullFonts.ui(12, weight: .medium))
+                                    .foregroundStyle(LullColors.textMuted)
+                                    .textCase(.uppercase)
+
+                                legalLink("Privacy Policy",
+                                          url: "https://leexuanxuan95-dev.github.io/lull/privacy.html")
+                                legalLink("Terms of Use",
+                                          url: "https://leexuanxuan95-dev.github.io/lull/terms.html")
+                                legalLink("Subscription EULA",
+                                          url: "https://www.apple.com/legal/internet-services/itunes/dev/stdeula/")
+                                legalLink("Support",
+                                          url: "https://leexuanxuan95-dev.github.io/lull/support.html")
+                            }
+                        }
+
                         // tiny credit
                         VStack(spacing: 4) {
                             Text("Lull · 1.0")
@@ -152,7 +171,7 @@ struct SettingsView: View {
         case .free:     return "Free · 1 story per night"
         case .pro:      return "Pro · unlimited stories + premium voices"
         case .proPlus:  return "Pro+ · everything, plus voice clone"
-        case .lifetime: return "Lifetime · all features, forever"
+        case .lifetime: return "Lifetime · all features, forever (incl. voice clone)"
         }
     }
 
@@ -164,6 +183,23 @@ struct SettingsView: View {
                 .textCase(.lowercase)
             LullTextField(placeholder: placeholder, text: text)
         }
+    }
+
+    private func legalLink(_ title: String, url: String) -> some View {
+        Button {
+            if let u = URL(string: url) { UIApplication.shared.open(u) }
+        } label: {
+            HStack {
+                Text(title)
+                    .font(LullFonts.ui(15))
+                    .foregroundStyle(LullColors.textPrimary)
+                Spacer()
+                Image(systemName: "arrow.up.right.square")
+                    .font(.system(size: 13))
+                    .foregroundStyle(LullColors.textMuted)
+            }
+        }
+        .buttonStyle(.plain)
     }
 
     private func navRow(icon: String, title: String, subtitle: String) -> some View {

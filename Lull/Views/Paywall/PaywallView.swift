@@ -6,8 +6,15 @@ struct PaywallView: View {
     @EnvironmentObject var subscription: SubscriptionStore
     @Environment(\.dismiss) private var dismiss
 
-    @State private var selection: PlanID = .annual
+    @State private var selection: PlanID = .lifetime
     @State private var purchasing: Bool = false
+
+    /// v1 ships only the lifetime non-consumable IAP. Subscriptions are
+    /// scaffolded but hidden until v1.1 — per the App Store deploy runbook
+    /// §13, "v1 只交 1 个 NON_CONSUMABLE IAP. paywall 上不显示任何未提交的 IAP."
+    /// To re-enable subscriptions in a future version: flip this to false,
+    /// finish ASC subscription group setup, and re-submit.
+    private static let v1LifetimeOnly = true
 
     enum PlanID: String, Identifiable {
         case monthly, annual, lifetime, proPlus
@@ -53,7 +60,7 @@ struct PaywallView: View {
                     .font(LullFonts.ui(13))
                     .foregroundStyle(LullColors.textMuted)
 
-                    Text("auto-renews until canceled. cancel anytime in settings.")
+                    Text(legalFooter)
                         .font(LullFonts.ui(11))
                         .foregroundStyle(LullColors.textMuted)
                         .multilineTextAlignment(.center)
@@ -99,10 +106,15 @@ struct PaywallView: View {
 
     private var plans: some View {
         VStack(spacing: 10) {
-            planRow(.annual,   title: "Yearly",      subtitle: "$69/yr · most popular")
-            planRow(.monthly,  title: "Monthly",     subtitle: "$9.99/mo")
-            planRow(.lifetime, title: "Lifetime",    subtitle: "$99 once · keep it forever")
-            planRow(.proPlus,  title: "Pro+ Monthly", subtitle: "$14.99/mo · adds voice clone")
+            if Self.v1LifetimeOnly {
+                planRow(.lifetime, title: "Lifetime",
+                        subtitle: "$99 once · all features, forever")
+            } else {
+                planRow(.annual,   title: "Yearly",       subtitle: "$69/yr · most popular")
+                planRow(.monthly,  title: "Monthly",      subtitle: "$9.99/mo")
+                planRow(.lifetime, title: "Lifetime",     subtitle: "$99 once · keep it forever")
+                planRow(.proPlus,  title: "Pro+ Monthly", subtitle: "$14.99/mo · adds voice clone")
+            }
         }
     }
 
@@ -165,7 +177,16 @@ struct PaywallView: View {
     }
 
     private var perkList: [String] {
-        [
+        if Self.v1LifetimeOnly {
+            return [
+                "unlimited stories per night",
+                "all eight narrator voices",
+                "sleep timer + smart-wake alarm",
+                "Apple Watch complication",
+                "no subscription, no renewal — pay once"
+            ]
+        }
+        return [
             "unlimited stories per night",
             "all eight narrator voices",
             "sleep timer + smart-wake alarm",
@@ -177,11 +198,22 @@ struct PaywallView: View {
     }
 
     private var ctaTitle: String {
+        if Self.v1LifetimeOnly { return "unlock lifetime · $99" }
         switch selection {
         case .lifetime: return "buy lifetime"
         case .proPlus:  return "start Pro+"
         default:        return "start Pro"
         }
+    }
+
+    /// Footer disclosure shown under the CTA. Lifetime is a one-time non-
+    /// consumable — no auto-renew language. Subscription wording will return
+    /// in v1.1 once subs are submitted.
+    private var legalFooter: String {
+        if Self.v1LifetimeOnly || selection == .lifetime {
+            return "one-time purchase. no auto-renewal. restored across devices on the same Apple ID."
+        }
+        return "auto-renews until canceled. cancel anytime in settings."
     }
 
     private func purchase() async {
